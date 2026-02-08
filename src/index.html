@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What to Watch Next | Home</title>
+    <link rel="stylesheet" href="/src/css/main.css" />
+    <link rel="stylesheet" href="/src/css/larger.css" />
+    <script src="../config.local.js"></script>
+    <script src="/src/js/main.js" type="module"></script>
+    <script src="js/modules/hamburgerMenu.js" type="module"></script>
+    <script src="js/form.js" type="module"></script>
+
+
+
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header class="divider-bottom">
+    </header>
+    <main>
+        <form action="submit" method="post">
+            <div class="dropdowns-and-ratings">
+                <fieldset>
+                    <legend>Vibes (select all that apply)</legend>
+                    <p class="vibe-hint">(Max 3 reccomended Vibes)</p>
+                    <div class="vibes">
+                        <label class="vibe-item">
+                            <input type="checkbox" name="vibe[]" value="date-night" />
+                            Date Night
+                        </label>
+
+                        <label class="vibe-item">
+                            <input type="checkbox" name="vibe[]" value="action-rush" />
+                            Action Rush
+                        </label>
+
+                        <label class="vibe-item">
+                            <input type="checkbox" name="vibe[]" value="laughs" />
+                            Laughs
+                        </label>
+
+                        <label class="vibe-item">
+                            <input type="checkbox" name="vibe[]" value="epic-adventure" />
+                            Epic Adventure
+                        </label>
+
+                        <label class="vibe-item">
+                            <input type="checkbox" name="vibe[]" value="mind-bender" />
+                            Mind-Bender
+                        </label>
+
+                        <label class="vibe-item">
+                            <input type="checkbox" name="vibe[]" value="dark-and-gritty" />
+                            Dark and Gritty
+                        </label>
+
+                        <label class="vibe-item">
+                            <input type="checkbox" name="vibe[]" value="spooky" />
+                            Spooky
+                        </label>
+
+                        <label class="vibe-item">
+                            <input type="checkbox" name="vibe[]" value="feel-good" />
+                            Feel Good
+                        </label>
+
+                        <label class="vibe-item">
+                            <input type="checkbox" name="vibe[]" value="emotional" />
+                            Emotional
+                        </label>
+
+                        <label class="vibe-item">
+                            <input type="checkbox" name="vibe[]" value="true-story" />
+                            True Story
+                        </label>
+
+                        <label class="vibe-item">
+                            <input type="checkbox" name="vibe[]" value="animated" />
+                            Animated
+                        </label>
+
+                        <label class="vibe-item">
+                            <input type="checkbox" name="vibe[]" value="chill" />
+                            Chill
+                        </label>
+                    </div>
+                </fieldset>
+
+                <div>
+                    <fieldset class="year-range">
+                        <legend>Year Range</legend>
+                        <div>
+                            <label for="start-year-select">Start:</label>
+                            <select id="start-year-select" name="start-year"></select>
+                        </div>
+
+                        <div>
+                            <label for="end-year-select">End:</label>
+                            <select id="end-year-select" name="end-year"></select>
+                        </div>
+                    </fieldset>
+                </div>
+
+            </div>
+
+        </form>
+    </main>
+    <footer>
+    </footer>
+</body>
+
+</html>

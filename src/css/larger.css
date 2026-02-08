@@ -1,0 +1,39 @@
+@media screen and (min-width: 1024px) {
+    .reset-login {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        row-gap: 1rem;
+        padding: 1rem;
+        margin: 1rem;
+    }
+
+    .nav-container {
+        font-size: var(--large-font);
+
+        position: static;
+        height: auto;
+        width: auto;
+
+        transform: none;
+        transition: none;
+
+        background: transparent;
+
+        flex-direction: row;
+        align-items: center;
+
+        padding: 0;
+
+        box-shadow: none;
+        justify-content: space-evenly;
+        margin-bottom: 1rem;
+    }
+
+    .hamburger {
+        display: none;
+    }
+
+    .close-nav {
+        display: none;
+    }
+}
