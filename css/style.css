@@ -141,6 +141,7 @@ a {
     background: var(--gradient-yellow-center);
     border-radius: 0.8rem;
     padding: 0.5rem;
+    border: 2px solid var(--accent-color-light);
 }
 
 .divider-bottom {
@@ -166,17 +167,17 @@ a {
     width: 100%;
     margin: 10px;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    justify-items: flex-end;
+    padding-right: 20%;
 }
 
 .pair {
     display: flex;
-    align-items: center;
-    justify-content: center;
     gap: 6px;
 }
 
 input[type="checkbox"] {
-    transform: scale(1.3);
+    transform: scale(1.5);
 }
 
 .ratings label {
@@ -230,4 +231,36 @@ form {
 
 fieldset {
     border: 1px solid var(--accent-color-light);
+}
+
+#find-movies {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.7rem;
+    font-family: var(--large-font);
+    font-size: var(--large-font);
+    font-weight: 700;
+    box-shadow: 0 5px 0 var(--accent-color-dark), 0 12px 5px var(--accent-color-dark);
+    transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+#find-movies:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 7px 0 var(--accent-color-dark), 0 14px 26px var(--accent-color-dark);
+}
+
+#find-movies:active {
+    transform: translateY(2px);
+    box-shadow: 0 3px 0 var(--light-grey), 0 6px 12px var(--light-grey);
+}
+
+.movie-details-div {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin: 1rem;
+}
+
+.movie-details-col1,
+.movie-details-col2 {
+    margin: 1rem;
 }
