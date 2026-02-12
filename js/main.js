@@ -1,5 +1,5 @@
 import { setupHamburgerMenu } from "./modules/hamburgerMenu.js";
-import { loadHeaderFooter, vibeToWithGenres, getVibeKeys } from "./util.mjs";
+import { loadHeaderFooter, vibeToWithGenres, getVibeKeys } from "/js/util.mjs";
 
 
 await loadHeaderFooter(setupHamburgerMenu);

@@ -108,7 +108,9 @@ a {
 .hamburger {
     display: flex;
     align-self: center;
+    justify-self: center;
     cursor: pointer;
+
 }
 
 /* Footer */
@@ -254,13 +256,34 @@ fieldset {
     box-shadow: 0 3px 0 var(--light-grey), 0 6px 12px var(--light-grey);
 }
 
-.movie-details-div {
+.home-movie-div {
     display: grid;
     grid-template-columns: 1fr 2fr;
     margin: 1rem;
 }
 
-.movie-details-col1,
-.movie-details-col2 {
+.movie-details-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     margin: 1rem;
+}
+
+.movie-details-col1,
+.movie-details-col2,
+.home-movie-col1,
+.home-movie-col2 {
+    margin: 1rem;
+}
+
+
+.backdrop {
+    display: flex;
+    width: 70%;
+    border-radius: 1rem;
+    margin: 1rem;
+    justify-self: center;
+}
+
+.movie-details-img {
+    border-radius: 1rem;
 }
