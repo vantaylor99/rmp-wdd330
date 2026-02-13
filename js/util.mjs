@@ -70,8 +70,8 @@ function prefixHeaderPaths(template) {
     if (segments.length <= 2) return template;
     const prefix = "../".repeat(segments.length - 1);
     return template
-        .replace(/\shref="(?!https?:|#|javascript:)([^"]*)"/g, (_, p1) => ` href="${prefix}${p1}"`)
-        .replace(/\ssrc="(?!https?:|data:)([^"]*)"/g, (_, p1) => ` src="${prefix}${p1}"`);
+        .replace(/\shref="(?!https?:|#|javascript:)([^"]+)"/g, (_, p1) => ` href="${prefix}${p1}"`)
+        .replace(/\ssrc="(?!https?:|data:)([^"]+)"/g, (_, p1) => ` src="${prefix}${p1}"`);
 }
 
 // Dynamically load the header and footer from the partials folder
