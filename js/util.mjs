@@ -63,9 +63,14 @@ async function loadTemplate(path) {
     return template;
 }
 
+// Full base URL (origin + path) so assets work everywhere. Use absolute URLs in templates.
+function getBaseUrl() {
+    return location.origin + BASE_PATH;
+}
+
 // Resolve __BASE_PATH__ in templates using config.env.js (local vs prod).
 function resolveBasePath(template) {
-    return template.replace(/__BASE_PATH__/g, BASE_PATH);
+    return template.replace(/__BASE_PATH__/g, getBaseUrl());
 }
 
 // Dynamically load the header and footer from the partials folder
