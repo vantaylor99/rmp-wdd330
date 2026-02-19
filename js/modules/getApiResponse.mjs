@@ -1,6 +1,6 @@
 import { getRandomNumberFromMax } from "../util.mjs";
 
-export async function getMovies(filters) {
+export async function getMovieObject(filters) {
     const myApiKey = window.__APP_CONFIG__.TMDB_API_KEY;
 
     const baseParams = {
@@ -31,6 +31,7 @@ export async function getMovies(filters) {
 
     baseParams.page = randomPage + 1
 
+
     const finalUrl = generateUrlFromQueryString(baseParams)
     const finalData = await getDataFromUrl(finalUrl)
 
@@ -41,6 +42,15 @@ export async function getMovies(filters) {
     };
 }
 
+export async function getMovieDetails(movieId) {
+    const DETAILS_URL = "https://api.themoviedb.org/3";
+    const myApiKey = window.__APP_CONFIG__.TMDB_API_KEY;
+    const url = `${DETAILS_URL}/movie/${movieId}?api_key=${myApiKey}&append_to_response=release_dates`;
+    const data = await getDataFromUrl(url);
+    return (data);
+}
+
+
 
 
 export function generateUrlFromQueryString(baseParams) {
@@ -49,6 +59,7 @@ export function generateUrlFromQueryString(baseParams) {
 
     return `${baseURL}?${query}`
 }
+
 
 export async function getDataFromUrl(url) {
     const results = await fetch(url);

@@ -235,7 +235,8 @@ fieldset {
     border: 1px solid var(--accent-color-light);
 }
 
-#find-movies {
+#find-movies,
+#add-favorites {
     width: 100%;
     margin-top: 1rem;
     padding: 0.7rem;
@@ -246,7 +247,8 @@ fieldset {
     transition: transform 140ms ease, box-shadow 140ms ease;
 }
 
-#find-movies:hover {
+#find-movies:hover,
+#add-favorites:hover {
     transform: translateY(-5px);
     box-shadow: 0 7px 0 var(--accent-color-dark), 0 14px 26px var(--accent-color-dark);
 }
@@ -254,6 +256,14 @@ fieldset {
 #find-movies:active {
     transform: translateY(2px);
     box-shadow: 0 3px 0 var(--light-grey), 0 6px 12px var(--light-grey);
+}
+
+#add-favorites {
+    max-width: 300px;
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+    margin-bottom: 2rem;
 }
 
 .home-movie-div {
@@ -297,4 +307,11 @@ fieldset {
 
 .movie-details-img {
     border-radius: 1rem;
+}
+
+/* Misc */
+
+.center-text {
+    text-align: center;
+    padding-top: 1rem;
 }

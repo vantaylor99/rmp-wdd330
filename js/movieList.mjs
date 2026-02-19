@@ -1,6 +1,7 @@
 import { qs } from "./util.mjs";
-import { renderWithTemplate } from "./util.mjs";
 import calculateRating from "./modules/calculateRating.mjs";
+import { convertRuntime } from "./util.mjs";
+
 
 function buildMovieTemplate(imgSrc, movieTitle, movieDescription, movieRating, vote_average, runTime, movieID) {
 
@@ -20,7 +21,7 @@ function buildMovieTemplate(imgSrc, movieTitle, movieDescription, movieRating, v
         <div class="home-movie-col2">
             <p><strong><a href="detailed_view/index.html?movieID=${movieID}">${movieTitle}: </a></strong>${movieDescription}</p>
             <a href="detailed_view/index.html?movieID=${movieID}">
-                <span class="stars">${stars}<span>
+                <span class="stars">${stars}</span>
             </a>
             <p><strong>Runtime: </strong>${runTime}</p>
         </div>
@@ -31,17 +32,21 @@ function buildMovieTemplate(imgSrc, movieTitle, movieDescription, movieRating, v
 
 
 
-const imgSrc = "https://image.tmdb.org/t/p/w342/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg";
-const movieTitle = "Fight Club";
-const movieDescription = "A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground \"fight clubs\" forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.";
-const movieRating = "R";
-const vote_average = 8.4;
-const runTime = "2h 19m";
-const movieID = 550;
+export function renderMovieList(movieArray, parentDiv) {
+    const movieResultsDiv = qs(parentDiv);
+    movieResultsDiv.innerHTML = ``
+    movieArray.forEach(movie => {
+        const imgSrc = `https://image.tmdb.org/t/p/w342/${movie.poster_path}`;
+        const movieTitle = movie.title;
+        const movieDescription = movie.overview;
+        const movieRating = movie.certification;
+        const vote_average = movie.vote_average;
+        const runTime = convertRuntime(movie.runtime);
+        const movieID = movie.id;
+
+        const movieTemplate = buildMovieTemplate(imgSrc ?? "https://www.kindpng.com/picc/m/18-189751_movie-placeholder-hd-png-download.png", movieTitle, movieDescription, movieRating, vote_average, runTime, movieID)
+        movieResultsDiv.insertAdjacentHTML('beforeend', movieTemplate);
+    });
 
 
-const result = buildMovieTemplate(imgSrc, movieTitle, movieDescription, movieRating, vote_average, runTime, movieID);
-const movieResultsDiv = qs(".movie-results");
-
-renderWithTemplate(result, movieResultsDiv, null, null)
-
+}

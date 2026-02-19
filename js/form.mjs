@@ -69,19 +69,17 @@ function getSelectedYearRange() {
 }
 
 
-function getFormEntryObject() {
-    const object = {
+export function getFormEntryObject() {
+    return {
         vibes: getCheckboxValues("vibe[]"),
         yearRange: getSelectedYearRange(),
         ratings: getCheckboxValues("rating")
     }
-    console.log(object)
+
 }
 
 
 
-
-setClick('#find-movies', getFormEntryObject)
 
 
 

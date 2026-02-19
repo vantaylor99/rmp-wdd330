@@ -1,5 +1,6 @@
 import { VIBE_MAP } from "./constants.js";
 import { BASE_PATH } from "../config.env.js";
+import calculateRating from "./modules/calculateRating.mjs";
 
 // wrapper for querySelector...returns matching element
 export function qs(selector, parent = document) {
@@ -54,6 +55,58 @@ export function renderWithTemplate(template, parentElement, callback, data) {
     }
 }
 
+export function buildMovieDetailViewTemplate(backdropPath, movieTitle, movieDescription, movieRating, vote_average, runTime, posterPath, movieLink, _movieID) {
+    const stars = calculateRating(vote_average);
+    return `
+    <div class="backdrop-div">
+        <a href="${movieLink}">
+            <img src="${backdropPath}" alt="Cover image of ${movieTitle}" class="backdrop">
+        </a>
+    </div>
+    <div class="movie-details-columns">
+        <div class="movie-details-col1">
+            <p><strong><a href="${movieLink}">${movieTitle}: </a></strong>${movieDescription}</p>
+        </div>
+        <div class="movie-details-col2">
+            <a href="${movieLink}">
+                <img src="${posterPath}" alt="Poster image of ${movieTitle}" class="movie-details-img">
+            </a>
+            <p class="movie-details-rating">${movieRating}</p>
+            <a href="${movieLink}">
+                <h3>${movieTitle}</h3>
+            </a>
+            <a href="${movieLink}">
+                <span class="stars">${stars}</span>
+            </a>
+            <p><strong>Runtime: </strong>${runTime}</p>
+        </div>
+    </div>`
+}
+
+export function buildMovieCardTemplate(_backdropPath, movieTitle, movieDescription, movieRating, vote_average, runTime, posterPath, _movieLink, movieID) {
+    const stars = calculateRating(vote_average);
+    const detailUrl = `../detailed_view/index.html?movieID=${movieID}`;
+    return `
+    <div class="home-movie-div">
+        <div class="home-movie-col1">
+            <a href="${detailUrl}">
+                <img src="${posterPath}" alt="Poster image of ${movieTitle}">
+            </a>
+            <a href="${detailUrl}">
+                <h3>${movieTitle}</h3>
+            </a>
+            <p>${movieRating}</p>
+        </div>
+        <div class="home-movie-col2">
+            <p><strong><a href="${detailUrl}">${movieTitle}: </a></strong>${movieDescription}</p>
+            <a href="${detailUrl}">
+                <span class="stars">${stars}</span>
+            </a>
+            <p><strong>Runtime: </strong>${runTime}</p>
+        </div>
+    </div>`;
+}
+
 // Load templates and convert them into text.
 // Resolve path relative to this module so it works on GitHub Pages (subpath) and locally.
 async function loadTemplate(path) {
@@ -96,7 +149,7 @@ export function capitalizeString(string) {
 export function alertMessage(message) {
     const alert = document.createElement('div');
     const exitAlert = document.createElement('p')
-    alert.innerHTML = `${message}`
+    alert.innerHTML = `${message} `
     alert.classList.add('alert');
     exitAlert.textContent = '✕'
     exitAlert.classList.add('exit-alert')
@@ -128,4 +181,13 @@ export function getRandomNumberFromMax(pageCount) {
     const maxPageLimit = Math.min(pageCount, 500);
     const randomNumber = (Math.floor(Math.random() * maxPageLimit));
     return randomNumber;
+}
+
+export function vibeToGenres(vibeKey) {
+    const genres = VIBE_MAP[vibeKey]?.genres ?? [];
+    return genres.join("|");
+}
+
+export function convertRuntime(runTime) {
+    return `${Math.floor(runTime / 60)}h ${runTime % 60} m`;
 }
