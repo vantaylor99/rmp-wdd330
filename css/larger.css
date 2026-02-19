@@ -7,6 +7,10 @@
         margin: 1rem;
     }
 
+    body {
+        margin: 0 auto;
+    }
+
     .nav-container {
         font-size: var(--large-font);
 
