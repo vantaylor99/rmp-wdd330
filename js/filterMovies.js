@@ -39,7 +39,7 @@ setClick('#find-movies', async () => {
     const movieObject = await getMovieObject(filters);
     const movieArray = await qualifyResultsAndGetMovieArray(filters, movieObject);
 
-    const poolSize = Math.min(10, movieArray.length);
+    const poolSize = Math.min(25, movieArray.length);
     const poolIndexes = getRandomMovieIndexes(movieArray).slice(0, poolSize);
     const poolMovies = poolIndexes.map(i => movieArray[i]);
 
@@ -47,7 +47,10 @@ setClick('#find-movies', async () => {
     const detailsResults = await Promise.all(detailsPromises);
     detailsResults.forEach((movie) => {
         const us = movie.release_dates?.results?.find((r) => r.iso_3166_1 === "US");
-        movie.certification = us?.release_dates?.[0]?.certification ?? "";
+        const nonEmptyUsCert = us?.release_dates
+            ?.map((rd) => (rd.certification || "").toUpperCase().trim())
+            .find((cert) => cert.length > 0);
+        movie.certification = nonEmptyUsCert ?? "";
     });
 
     const allowed = detailsResults.filter((movie) => {
