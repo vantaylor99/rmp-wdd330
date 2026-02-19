@@ -315,3 +315,7 @@ fieldset {
     text-align: center;
     padding-top: 1rem;
 }
+
+.copy {
+    padding: 1rem;
+}
